@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Aventura</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="iconos/icono.ico" type="image/x-icon"> <!-- Ícono actualizado -->
+</head>
+<body>
+    <main>
+        <h1>Eco Aventura</h1>
+        <div id="eco-content">
+            <h2 id="current-level">Nivel: Inicial</h2> <!-- Título dinámico del nivel -->
+            <h3 id="current-content">Presiona "Iniciar" para comenzar</h3>
+            <button id="start-voice">Iniciar Reconocimiento de Voz</button>
+            <p id="feedback">Repite correctamente para avanzar.</p>
+            <div id="progress-container">
+                <label for="progress-bar">Progreso:</label>
+                <progress id="progress-bar" value="0" max="100"></progress>
+            </div>
+        </div>
+    </main>
+    <script src="js/eco-aventura.js" type="module"></script> <!-- Cargar como módulo -->
+</body>
+</html>

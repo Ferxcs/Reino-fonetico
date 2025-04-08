@@ -1,0 +1,514 @@
+/* Estilo general */
+body {
+    font-family: 'Comic Sans MS', 'Arial', sans-serif; /* Fuente amigable para niños */
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+body, html {
+    height: 100%; /* Aseguramos que el fondo cubra toda la pantalla */
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Evitamos el scroll horizontal */
+    --x-0: 11%;
+    --y-0: 96%;
+    --c-0: hsla(195, 79%, 51%, 1);
+    --x-1: 95%;
+    --c-1: hsla(272, 100%, 64%, 1);
+    --y-1: 92%;
+    --x-2: 58%;
+    --y-2: 7%;
+    --c-2: hsla(216, 95%, 54%, 1);
+    --x-3: 62%;
+    --c-3: hsla(239, 76%, 52%, 1);
+    --y-3: 35%;
+    --c-4: hsla(232, 81%, 92%, 1);
+    --x-4: 2%;
+    --y-4: 63%;
+    background-color: hsla(272, 59%, 39%, 1);
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1495 1495' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"), 
+                      radial-gradient(circle at var(--x-0) var(--y-0), var(--c-0) var(--s-start-0), transparent var(--s-end-0)), 
+                      radial-gradient(circle at var(--x-1) var(--y-1), var(--c-1) var(--s-start-1), transparent var(--s-end-1)), 
+                      radial-gradient(circle at var(--x-2) var(--y-2), var(--c-2) var(--s-start-2), transparent var(--s-end-2)), 
+                      radial-gradient(circle at var(--x-3) var(--y-3), var(--c-3) var(--s-start-3), transparent var(--s-end-3)), 
+                      radial-gradient(circle at var(--x-4) var(--y-4), var(--c-4) var(--s-start-4), transparent var(--s-end-4));
+    animation: hero-gradient-animation 10s linear infinite alternate;
+    background-blend-mode: overlay, normal, hard-light, normal, normal, normal;
+    background-attachment: fixed; /* Fija el fondo para evitar que se mueva al hacer scroll */
+    background-size: cover; /* Asegura que el fondo cubra toda la pantalla */
+    background-repeat: no-repeat; /* Evita que el fondo se repita */
+}
+
+/* Animación del fondo */
+@keyframes hero-gradient-animation {
+    0% {
+        --s-start-0: 37%;
+        --s-end-0: 90%;
+        --x-0: 11%;
+        --y-0: 96%;
+        --c-0: hsla(195, 79%, 51%, 1);
+        --s-start-1: 31%;
+        --s-end-1: 84%;
+        --x-1: 95%;
+        --c-1: hsla(272, 100%, 64%, 1);
+        --y-1: 92%;
+        --x-2: 58%;
+        --y-2: 7%;
+        --s-start-2: 41%;
+        --s-end-2: 61%;
+        --c-2: hsla(216, 95%, 54%, 1);
+        --x-3: 62%;
+        --c-3: hsla(239, 76%, 52%, 1);
+        --s-start-3: 22%;
+        --s-end-3: 59%;
+        --y-3: 35%;
+        --c-4: hsla(232, 81%, 92%, 1);
+        --x-4: 2%;
+        --y-4: 63%;
+        --s-start-4: 19%;
+        --s-end-4: 70%;
+    }
+
+    50% {
+        --s-start-0: 29%;
+        --s-end-0: 73%;
+        --x-0: 6%;
+        --y-0: 12%;
+        --c-0: hsla(313, 78%, 76%, 1);
+        --s-start-1: 8%;
+        --s-end-1: 52.61503700898072%;
+        --x-1: 77%;
+        --c-1: hsla(235, 87%, 56%, 1);
+        --y-1: 29%;
+        --x-2: 75%;
+        --y-2: 23%;
+        --s-start-2: 29%;
+        --s-end-2: 80%;
+        --c-2: hsla(220, 51%, 96%, 1);
+        --x-3: 76%;
+        --c-3: hsla(218, 76%, 75%, 1);
+        --s-start-3: 2%;
+        --s-end-3: 81%;
+        --y-3: 64%;
+        --c-4: hsla(315, 89%, 98%, 1);
+        --x-4: 41%;
+        --y-4: 86%;
+        --s-start-4: 24%;
+        --s-end-4: 81%;
+    }
+
+    100% {
+        --s-start-1: 8%;
+        --s-end-1: 21.71776697271709%;
+        --x-1: 36%;
+        --c-1: hsla(235, 87%, 56%, 1);
+        --y-1: 13%;
+    }
+}
+
+/* Propiedades personalizadas para la animación */
+@property --s-start-0 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 37%
+}
+
+@property --s-end-0 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 90%
+}
+
+@property --x-0 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 11%
+}
+
+@property --y-0 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 96%
+}
+
+@property --c-0 {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: hsla(195, 79%, 51%, 1)
+}
+
+@property --s-start-1 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 31%
+}
+
+@property --s-end-1 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 84%
+}
+
+@property --x-1 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 95%
+}
+
+@property --c-1 {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: hsla(272, 100%, 64%, 1)
+}
+
+@property --y-1 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 92%
+}
+
+@property --x-2 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 58%
+}
+
+@property --y-2 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 7%
+}
+
+@property --s-start-2 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 41%
+}
+
+@property --s-end-2 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 61%
+}
+
+@property --c-2 {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: hsla(216, 95%, 54%, 1)
+}
+
+@property --x-3 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 62%
+}
+
+@property --c-3 {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: hsla(239, 76%, 52%, 1)
+}
+
+@property --s-start-3 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 22%
+}
+
+@property --s-end-3 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 59%
+}
+
+@property --y-3 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 35%
+}
+
+@property --c-4 {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: hsla(232, 81%, 92%, 1)
+}
+
+@property --x-4 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 2%
+}
+
+@property --y-4 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 63%
+}
+
+@property --s-start-4 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 19%
+}
+
+@property --s-end-4 {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 70%
+}
+
+header {
+    background-color: #ffcc00; /* Color vibrante */
+    color: #333;
+    padding: 1rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 2px 2px #ffa500; /* Sombra para resaltar el texto */
+}
+
+main {
+    padding: 2rem;
+    min-height: 100vh; /* El contenido ocupa al menos toda la altura de la pantalla */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+/* Botones generales */
+button {
+    background-color: #ff6f61; /* Color vibrante */
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #ff3b2f;
+    transform: scale(1.1); /* Efecto de agrandamiento */
+}
+
+/* Contenido de Eco Aventura */
+#eco-content {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+#progress-container {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+#progress-bar {
+    width: 100%;
+    height: 20px;
+    border: 1px solid #6200ea;
+    border-radius: 5px;
+}
+
+/* Botones de nivel */
+#level-buttons {
+    display: flex;
+    flex-wrap: wrap; /* Ajustar imágenes en pantallas pequeñas */
+    justify-content: center;
+    gap: 2.5rem; /* Espacio entre las imágenes */
+    margin-top: 2rem;
+}
+
+.level-button {
+    background-color: #03a9f4;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    border-radius: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para resaltar */
+}
+
+.level-button:hover {
+    background-color: #0288d1;
+    transform: scale(1.1);
+}
+
+/* Estilos para las imágenes de los niveles */
+.level-image {
+    width: 300px; /* Aumentamos el tamaño de las imágenes */
+    height: auto;
+    border-radius: 20px; /* Bordes redondeados */
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.3); /* Sombra para resaltar */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.level-image:hover {
+    transform: scale(1.2); /* Efecto de agrandamiento más pronunciado */
+    box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.4); /* Sombra más intensa */
+}
+
+/* Estilos para las imágenes de los cuentos */
+.story-image {
+    width: 300px; /* Tamaño de la imagen */
+    height: auto;
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.3); /* Sombra para resaltar */
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.story-image:hover {
+    transform: scale(1.1); /* Efecto de agrandamiento */
+    box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.4); /* Sombra más intensa */
+}
+
+/* Estilos para la imagen del karaoke */
+.story-image {
+    width: 300px; /* Tamaño de la imagen */
+    height: auto;
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.3); /* Sombra para resaltar */
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.story-image:hover {
+    transform: scale(1.1); /* Efecto de agrandamiento */
+    box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.4); /* Sombra más intensa */
+}
+
+/* Botón de regreso */
+#back-to-menu {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 1.2rem;
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #ff6f61;
+    padding: 0.8rem 1.2rem;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#back-to-menu:hover {
+    background-color: #ff3b2f;
+    transform: scale(1.1);
+}
+
+/* Opciones interactivas */
+#options-container {
+    display: flex;
+    flex-wrap: wrap; /* Ajustar botones en pantallas pequeñas */
+    justify-content: center;
+    gap: 1rem;
+}
+
+.option-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.option-button:hover {
+    background-color: #388e3c;
+    transform: scale(1.1);
+}
+
+/* Karaoke */
+#karaoke-content {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.karaoke-word {
+    font-size: 1.5rem;
+    margin: 0 0.3rem;
+    color: #333;
+}
+
+.correct-word {
+    color: #4caf50;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* Estilo para las palabras del karaoke */
+.karaoke-word {
+    font-size: 1.5rem;
+    margin: 0 0.3rem;
+    color: #333; /* Color inicial */
+    transition: color 0.3s ease;
+}
+
+.correct-word {
+    color: #4caf50; /* Cambia a verde cuando se pronuncia correctamente */
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* Estilo para las frases correctas en el karaoke */
+.karaoke-phrase {
+    font-size: 1.5rem;
+    margin: 0 0.5rem;
+    color: #333; /* Color inicial */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.correct-phrase {
+    color: #4caf50; /* Cambia a verde cuando se pronuncia correctamente */
+    font-weight: bold;
+    text-decoration: underline;
+    transform: scale(1.1); /* Efecto de agrandamiento */
+}
+
+/* Estilo para el título principal */
+h1 {
+    font-size: 4rem; /* Aumentamos el tamaño del título */
+    text-align: center; /* Centramos el texto */
+    margin-top: 1rem; /* Espaciado superior */
+    margin-bottom: 2rem; /* Espaciado inferior */
+    color: #fff; /* Color blanco para destacar sobre el fondo */
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5); /* Sombra para resaltar */
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    header {
+        font-size: 1.5rem;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 0.6rem 1rem;
+    }
+
+    .level-button {
+        font-size: 1.2rem;
+        padding: 0.8rem 1.5rem;
+    }
+
+    #karaoke-content {
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuentos que Hablan</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="iconos/icono.ico" type="image/x-icon"> <!-- Ícono actualizado -->
+</head>
+<body>
+    <main>
+        <h1>Cuentos que Hablan</h1>
+        <div id="stories-container">
+            <img id="start-video" src="imagenes/topo.jpg" alt="Iniciar cuento: Topo" class="story-image">
+        </div>
+        <video id="video-player" style="width: 100%; max-height: 400px; display: none;">
+            <source src="video/Muchos túneles y un problema.mp4" type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+        </video>
+        <div id="options-container" style="display: none; margin-top: 1rem;">
+            <button class="option-button" data-correct="true">Opción 1</button>
+            <button class="option-button" data-correct="false">Opción 2</button>
+        </div>
+        <p id="feedback">Selecciona la respuesta correcta para continuar con el cuento.</p>
+    </main>
+    <script src="js/cuentos.js" type="module"></script> <!-- Cargar como módulo -->
+</body>
+</html>

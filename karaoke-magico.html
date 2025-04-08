@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karaoke Mágico</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="iconos/icono.ico" type="image/x-icon"> <!-- Ícono actualizado -->
+</head>
+<body>
+    <main>
+        <h1>Karaoke Mágico</h1>
+        <div id="karaoke-container">
+            <img id="start-karaoke" src="imagenes/raton.jpg" alt="Iniciar Karaoke: Rolo Ratón" class="story-image">
+        </div>
+        <video id="karaoke-video" style="width: 100%; max-height: 400px; display: none;" muted>
+            <source src="video/Rolo Ratón.mp4" type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+        </video>
+        <div id="karaoke-content" style="text-align: center; margin-top: 1rem; display: none;">
+            <p id="karaoke-feedback">Repite la frase para continuar.</p>
+            <button id="retry-button" style="display: none;">Intentar de nuevo</button> <!-- Botón para reintentar -->
+        </div>
+    </main>
+    <script src="js/karaoke-magico.js" type="module"></script> <!-- Cargar como módulo -->
+</body>
+</html>
