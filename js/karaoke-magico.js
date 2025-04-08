@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const karaokeVideo = document.getElementById("karaoke-video");
     const startKaraokeImage = document.getElementById("start-karaoke");
     const karaokeContent = document.getElementById("karaoke-content");
-    const karaokePhrase = document.getElementById("karaoke-phrase");
+    const karaokePhrase = document.getElementById("karaoke-phrase"); // Contenedor para las frases
     const karaokeFeedback = document.getElementById("karaoke-feedback");
     const retryButton = document.getElementById("retry-button");
 
@@ -45,9 +45,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const recognition = new SpeechRecognition();
     recognition.lang = "es-ES";
-    recognition.interimResults = true; // Permitir resultados intermedios para mayor fluidez
+    recognition.interimResults = true;
 
-    // Función para normalizar texto (eliminar tildes, convertir a minúsculas, etc.)
+    // Función para normalizar texto
     const normalizeText = (text) => {
         return text
             .toLowerCase()
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (Math.floor(karaokeVideo.currentTime) === pausePoint.time) {
                 karaokeVideo.pause();
                 currentPhraseIndex = 0;
-                displayPhrases(pausePoint.phrases);
+                displayPhrases(pausePoint.phrases); // Mostrar las frases
                 karaokeFeedback.textContent = "Escuchando...";
                 retryButton.style.display = "none";
                 recognition.start();
@@ -97,22 +97,21 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(`Texto reconocido: "${transcript}"`);
         console.log(`Frase esperada: "${currentPhrase}"`);
 
-        // Verificar similitud en lugar de coincidencia exacta
         const similarity = calculateSimilarity(transcript, currentPhrase);
         console.log(`Similitud: ${similarity}`);
 
-        if (similarity > 0.7) { // Umbral de similitud (70%)
+        if (similarity > 0.7) {
             const phraseElements = document.querySelectorAll(".karaoke-phrase");
             const currentElement = phraseElements[currentPhraseIndex];
             if (currentElement) {
-                currentElement.classList.add("correct-phrase"); // Resaltar la frase actual
+                currentElement.classList.add("correct-phrase");
             }
 
             currentPhraseIndex++;
             if (currentPhraseIndex === phrases.length) {
                 karaokeFeedback.textContent = "¡Correcto! Continuando...";
                 currentPauseIndex++;
-                recognition.stop(); // Detener el reconocimiento al completar las frases
+                recognition.stop();
                 karaokeVideo.play();
             } else {
                 karaokeFeedback.textContent = `¡Bien! Ahora di: "${phrases[currentPhraseIndex]}"`;
@@ -122,27 +121,23 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Manejar errores del reconocimiento de voz
     recognition.addEventListener("error", (event) => {
         karaokeFeedback.textContent = `Error: ${event.error}`;
         retryButton.style.display = "block";
     });
 
-    // Manejar el final del reconocimiento de voz
     recognition.addEventListener("end", () => {
         if (currentPhraseIndex < pausePoints[currentPauseIndex].phrases.length) {
-            recognition.start(); // Continuar escuchando automáticamente
+            recognition.start();
         }
     });
 
-    // Manejar clic en el botón de reintentar
     retryButton.addEventListener("click", () => {
         karaokeFeedback.textContent = "Escuchando...";
         retryButton.style.display = "none";
         recognition.start();
     });
 
-    // Función para calcular la similitud entre dos cadenas
     const calculateSimilarity = (str1, str2) => {
         const longer = str1.length > str2.length ? str1 : str2;
         const shorter = str1.length > str2.length ? str2 : str1;
