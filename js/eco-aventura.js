@@ -7,25 +7,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const content = [
         // Nivel inicial
-        { text: "mamá", level: "Inicial" },
-        { text: "papá", level: "Inicial" },
-        { text: "sol", level: "Inicial" },
-        { text: "luna", level: "Inicial" },
-        { text: "taza", level: "Inicial" },
-        { text: "casa", level: "Inicial" },
-        { text: "La luna brilla", level: "Inicial" },
-        { text: "Mi mamá me ama", level: "Inicial" },
-        { text: "El sol sale", level: "Inicial" },
+        { text: "Mamá", level: "Inicial" },
+        { text: "Papá", level: "Inicial" },
+        { text: "Sol", level: "Inicial" },
+        { text: "Luna", level: "Inicial" },
+        { text: "Taza", level: "Inicial" },
+        { text: "Casa", level: "Inicial" },
         // Nivel intermedio
-        { text: "tren", level: "Intermedio" },
-        { text: "flor", level: "Intermedio" },
-        { text: "grillo", level: "Intermedio" },
-        { text: "plátano", level: "Intermedio" },
+        { text: "Elefante", level: "Intermedio" },
+        { text: "Montaña", level: "Intermedio" },
+        { text: "Computadora", level: "Intermedio" },
+        { text: "Grillo", level: "Intermedio" },
         { text: "La rana salta y canta", level: "Intermedio" },
         { text: "El gato en el zapato", level: "Intermedio" },
         // Nivel avanzado
         { text: "Tres tristes tigres comen trigo", level: "Avanzado" },
-        { text: "Pedro pica papas", level: "Avanzado" }
+        { text: "Si el caracol tuviera cara sería un caracol con cara", level: "Avanzado" }
     ];
 
     let currentIndex = 0;
@@ -53,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Función para iniciar el reconocimiento de voz
     startVoiceButton.addEventListener("click", () => {
+        startVoiceButton.style.display = "none"; // Ocultar el botón al iniciar
         if (currentIndex >= content.length) {
             feedback.textContent = "¡Felicidades! Has completado todos los niveles.";
             return;
@@ -61,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const currentItem = content[currentIndex];
         currentContent.textContent = currentItem.text;
         currentLevel.textContent = `Nivel: ${currentItem.level}`;
-        feedback.textContent = "Escuchando... por favor, repite.";
+        feedback.textContent = "Escuchando..."; // Feedback más grande
         recognition.start();
     });
 
@@ -73,18 +71,21 @@ document.addEventListener("DOMContentLoaded", () => {
         if (transcript === expected) {
             feedback.textContent = "¡Correcto! Avanzando al siguiente contenido.";
             currentIndex++;
-            progressBar.value = (currentIndex / content.length) * 100;
+            updateProgressBar();
 
             if (currentIndex < content.length) {
                 const nextItem = content[currentIndex];
                 currentContent.textContent = nextItem.text;
                 currentLevel.textContent = `Nivel: ${nextItem.level}`;
+                recognition.start(); // Continuar escuchando automáticamente
             } else {
                 currentContent.textContent = "¡Has completado todos los niveles!";
                 currentLevel.textContent = "Nivel: Completado";
+                feedback.textContent = "¡Felicidades! Has completado todo.";
             }
         } else {
             feedback.textContent = `Incorrecto. Escuché: "${transcript}". Intenta de nuevo.`;
+            recognition.start(); // Reintentar automáticamente
         }
     });
 
@@ -93,6 +94,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     recognition.addEventListener("end", () => {
-        feedback.textContent += " (Reconocimiento finalizado)";
+        if (currentIndex < content.length) {
+            recognition.start(); // Continuar escuchando automáticamente
+        }
     });
+
+    // Función para actualizar la barra de progreso
+    const updateProgressBar = () => {
+        const progressPercentage = (currentIndex / content.length) * 100;
+        progressBar.value = progressPercentage; // Actualiza el valor de la barra
+        progressBar.textContent = `${Math.round(progressPercentage)}%`; // Muestra el porcentaje
+    };
 });

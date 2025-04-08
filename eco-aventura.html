@@ -8,13 +8,14 @@
     <link rel="icon" href="iconos/icono.ico" type="image/x-icon"> <!-- Ícono actualizado -->
 </head>
 <body>
+    <a href="index.html" class="back-button">Volver</a> <!-- Botón "Volver" -->
     <main>
         <h1>Eco Aventura</h1>
         <div id="eco-content">
             <h2 id="current-level">Nivel: Inicial</h2> <!-- Título dinámico del nivel -->
-            <h3 id="current-content">Presiona "Iniciar" para comenzar</h3>
-            <button id="start-voice">Iniciar Reconocimiento de Voz</button>
-            <p id="feedback">Repite correctamente para avanzar.</p>
+            <h3 id="current-content" style="font-size: 3rem;">Presiona "Iniciar" para comenzar</h3> <!-- Palabras más grandes -->
+            <button id="start-voice" style="font-size: 1rem;">Iniciar Reconocimiento de Voz</button> <!-- Botón más pequeño -->
+            <p id="feedback" style="font-size: 2rem;">Repite correctamente para avanzar.</p> <!-- Feedback más grande -->
             <div id="progress-container">
                 <label for="progress-bar">Progreso:</label>
                 <progress id="progress-bar" value="0" max="100"></progress>

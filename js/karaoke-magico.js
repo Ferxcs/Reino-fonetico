@@ -10,25 +10,23 @@ document.addEventListener("DOMContentLoaded", () => {
         {
             time: 27,
             phrases: [
-                "rolo raton",
-                "rolo raton",
-                "pasa el rato",
-                "en un rincon",
+                "Rolo ratón",
+                "Rolo ratón",
+                "pasa el rato en un rincon",
                 "come rosquillas",
                 "sobre una silla",
-                "con roberto y con ramon"
+                "con Roberto y con Ramón"
             ]
         },
         {
             time: 63,
             phrases: [
-                "rolo raton",
-                "rolo raton",
-                "pasa el rato",
-                "en un rincon",
+                "Rolo ratón",
+                "Rolo ratón",
+                "pasa el rato en un rincon",
                 "come rosquillas",
                 "sobre una silla",
-                "con roberto y con ramon"
+                "con Roberto y con Ramón"
             ]
         }
     ];

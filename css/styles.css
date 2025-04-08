@@ -306,16 +306,25 @@ button:hover {
     margin-top: 2rem;
 }
 
+/* Barra de progreso simplificada */
 #progress-container {
     margin-top: 1rem;
     text-align: center;
+    width: 100%;
 }
 
 #progress-bar {
     width: 100%;
     height: 20px;
-    border: 1px solid #6200ea;
-    border-radius: 5px;
+    background-color: #4caf50; /* Color verde para la barra */
+    color: white;
+    text-align: center;
+    line-height: 20px;
+    font-size: 0.9rem;
+    transition: width 0.3s ease-in-out;
+    border: none; /* Sin bordes */
+    border-radius: 0; /* Sin bordes redondeados */
+    box-shadow: none; /* Sin sombra */
 }
 
 /* Botones de nivel */
@@ -410,12 +419,29 @@ button:hover {
     transform: scale(1.1);
 }
 
+/* Botón "Volver" */
+.back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 1.2rem;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.back-button:hover {
+    color: #ffcc00; /* Cambia el color al pasar el mouse */
+    transform: scale(1.1); /* Efecto de agrandamiento */
+}
+
 /* Opciones interactivas */
 #options-container {
     display: flex;
     flex-wrap: wrap; /* Ajustar botones en pantallas pequeñas */
     justify-content: center;
-    gap: 1rem;
+    gap: 1.5rem; /* Aumentamos el espacio entre los botones */
 }
 
 .option-button {
