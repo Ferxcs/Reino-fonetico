@@ -11,7 +11,7 @@ body, html {
     height: 100%; /* Aseguramos que el fondo cubra toda la pantalla */
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Evitamos el scroll horizontal */
+    overflow: hidden; /* Cambiado de overflow-x a overflow */
 }
 
 header {
@@ -25,13 +25,14 @@ header {
 }
 
 main {
-    padding: 2rem;
-    min-height: 100vh; /* El contenido ocupa al menos toda la altura de la pantalla */
+    height: 100vh;
+    padding: 0; /* Removido el padding */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
+    overflow: hidden;
 }
 
 section {
@@ -58,38 +59,129 @@ button:hover {
 
 /* Contenido de Eco Aventura */
 #eco-content {
-    text-align: center;
-    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    padding: 20px;
+    gap: 15px;
 }
 
-/* Barra de progreso simplificada */
-#progress-container {
-    margin-top: 1rem;
+#word-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+#word-container img {
+    width: auto;
+    max-height: 300px;
+    border-radius: 15px;
+}
+
+#current-content {
+    font-size: 2rem;
+    margin: 0;
+}
+
+/* Contenido de Eco Aventura ajustado */
+#eco-content {
     text-align: center;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    gap: 15px;
+}
+
+#word-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#word-container img {
+    max-height: 200px;
+    width: auto;
+    border-radius: 15px;
+}
+
+#current-content {
+    font-size: 1.5rem;
+    margin: 0;
+    color: #333;
+}
+
+/* Ajustes para las imágenes de Eco Aventura */
+#word-container img {
+    max-height: 300px !important; /* Aumentado de 200px a 300px */
+    width: auto;
+    margin: 20px 0;
+    border-radius: 15px;
+}
+
+#word-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+#current-content {
+    font-size: 1.8rem; /* Texto un poco más pequeño */
+    margin: 1rem 0; /* Reducido el margen */
+}
+
+@media (max-width: 768px) {
+    #word-container img {
+        max-height: 250px !important;
+        width: auto;
+        max-width: 90vw;
+    }
+}
+
+/* Barra de progreso */
+#progress-container {
+    width: 250px;
+    margin: 10px auto 5rem auto; /* Aumentado significativamente el margen inferior */
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    padding: 3px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+    position: relative; /* Asegura que el margen inferior sea respetado */
 }
 
 #progress-bar {
     width: 100%;
-    height: 20px;
-    background-color: #4caf50; /* Color verde para la barra */
-    color: white;
-    text-align: center;
-    line-height: 20px;
-    font-size: 0.9rem;
+    height: 15px;
+    background: linear-gradient(90deg, #4CAF50, #45a049);
+    border-radius: 10px;
     transition: width 0.3s ease-in-out;
-    border: none; /* Sin bordes */
-    border-radius: 0; /* Sin bordes redondeados */
-    box-shadow: none; /* Sin sombra */
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+    #progress-container {
+        width: 80%;
+    }
+
+    #word-container img {
+        max-height: 200px;
+    }
 }
 
 /* Botones de nivel */
 #level-buttons {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    overflow: hidden; /* Oculta los elementos fuera del contenedor */
     display: flex;
-    flex-wrap: wrap; /* Ajustar imágenes en pantallas pequeñas */
-    justify-content: center;
-    gap: 2.5rem; /* Espacio entre las imágenes */
-    margin-top: 2rem;
 }
 
 .level-button {
@@ -112,12 +204,13 @@ button:hover {
 
 /* Estilos para las imágenes de los niveles */
 .level-image {
-    width: 300px; /* Aumentamos el tamaño de las imágenes */
-    height: auto;
+    flex: 0 0 100%; /* Cada imagen ocupa el 100% del ancho del contenedor */
+    max-width: 100%;
+    max-height: 100%;
+    transition: transform 0.5s ease; /* Transición suave al desplazarse */
     border-radius: 20px; /* Bordes redondeados */
     box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.3); /* Sombra para resaltar */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
+    object-fit: contain; /* Mantiene las proporciones de la imagen */
 }
 
 .level-image:hover {
@@ -266,12 +359,17 @@ button:hover {
 
 /* Estilo para el título principal */
 h1 {
-    font-size: 4rem; /* Aumentamos el tamaño del título */
-    text-align: center; /* Centramos el texto */
-    margin-top: 1rem; /* Espaciado superior */
-    margin-bottom: 2rem; /* Espaciado inferior */
-    color: #fff; /* Color blanco para destacar sobre el fondo */
-    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5); /* Sombra para resaltar */
+    font-size: 4rem; /* Reducido de 5.5rem a 4rem */
+    text-align: center;
+    margin: 10px 0 20px 0; /* Reducidos los márgenes */
+    color: #ffcc00;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    animation: none; /* Removemos la animación por defecto */
+}
+
+h1.animate {
+    animation: dropDown 0.3s ease-out forwards; /* Reducido de 1s a 0.3s */
 }
 
 /* Responsividad */
@@ -292,5 +390,232 @@ h1 {
 
     #karaoke-content {
         font-size: 1rem;
+    }
+
+    h1 {
+        font-size: 2.5rem; /* Reducido de 3rem a 2.5rem */
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Estilos simplificados para el carrusel */
+.scroll-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px; /* Reducido el padding */
+}
+
+.single-button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.game-button {
+    display: none;
+}
+
+.game-button.active {
+    display: block;
+}
+
+.game-button img {
+    max-height: 65vh; /* Reducido de 70vh a 65vh */
+    width: auto;
+    max-width: 800px; /* Ancho máximo para escritorio */
+    border-radius: 15px; /* Agregamos bordes redondeados suaves */
+    animation: slideIn 0.5s ease-out;
+    transition: transform 0.3s ease;
+}
+
+.game-button:hover img {
+    transform: scale(1.05);
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    .game-button img {
+        max-width: 90vw;
+        max-height: none;
+    }
+}
+
+.nav-arrow {
+    position: fixed;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.prev-arrow {
+    left: 20px;
+}
+
+.next-arrow {
+    right: 20px;
+}
+
+@media (max-width: 768px) {
+    .game-button img {
+        max-width: 90vw;
+    }
+}
+
+/* Animaciones */
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes dropDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Aplicamos la animación específicamente al h1 de la página principal */
+body:not([class]) main h1 {
+    animation: dropDown 1s ease-out forwards;
+}
+
+/* Mensaje de inactividad */
+.inactivity-message {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.inactivity-message.show {
+    opacity: 1;
+}
+
+/* Aplicar animaciones */
+h1, h2, h3, p {
+    animation: slideDown 0.5s ease-out;
+}
+
+/* Estilos para el botón de inicio */
+.start-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1rem 3rem;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-top: 2rem;
+}
+
+.start-button:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.start-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.start-button {
+    margin: 1rem 0; /* Reducido el margen del botón */
+}
+
+/* Ajustes para el feedback */
+#feedback {
+    font-size: 1.2rem;
+    margin: 5px 0;
+}
+
+/* Ajustes para eco-aventura */
+#eco-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+    padding: 0 20px;
+    gap: 1rem;
+}
+
+h1 {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+#word-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem; /* Reducido de 1rem a 0.5rem */
+}
+
+#word-container img {
+    width: auto;
+    max-height: 300px;
+    margin-bottom: 0.5rem; /* Espacio reducido entre imagen y texto */
+}
+
+#progress-container {
+    margin-bottom: 2rem;
+    width: 250px;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    h1 {
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    #word-container {
+        gap: 0.3rem;
+    }
+
+    #progress-container {
+        margin-bottom: 1.5rem;
     }
 }

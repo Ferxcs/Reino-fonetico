@@ -4,26 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reino Fonetico</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="icon" href="iconos/icono.ico" type="image/x-icon"> <!-- Ícono actualizadooooo -->
+    <link rel="icon" href="iconos/icono.ico" type="image/x-icon">
 </head>
 <body>
+    <audio id="background-music" loop>
+        <source src="audio/sonido de fondo.mp3" type="audio/mp3">
+    </audio>
     <main>
         <h1>Reino Fonético</h1>
         <section id="level-section">
-            <div id="level-buttons">
-                <a href="eco-aventura.html">
-                    <img src="imagenes/eco aventura.jpg" alt="Eco Aventura" class="level-image">
-                </a>
-                <a href="karaoke-magico.html"> <!-- Ruta relativa corregida -->
-                    <img src="imagenes/karaoke magico.jpg" alt="Karaoke Mágico" class="level-image">
-                </a>
-                <a href="cuentos.html">
-                    <img src="imagenes/cuentos que hablan.jpg" alt="Cuentos que Hablan" class="level-image">
-                </a>
+            <div class="scroll-container">
+                <button class="nav-arrow prev-arrow">←</button>
+                <div class="single-button-container">
+                    <a href="eco-aventura.html" class="game-button active">
+                        <img src="imagenes/eco aventura.png" alt="Eco Aventura">
+                    </a>
+                    <a href="karaoke-magico.html" class="game-button">
+                        <img src="imagenes/karaoke magico.png   " alt="Karaoke Mágico">
+                    </a>
+                    <a href="cuentos.html" class="game-button">
+                        <img src="imagenes/cuentos que hablan.png" alt="Cuentos que Hablan">
+                    </a>
+                </div>
+                <button class="nav-arrow next-arrow">→</button>
             </div>
         </section>
     </main>
-    <script src="js/app.js" type="module"></script> <!-- Cargar como módulo -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/app.js" type="module"></script>
 </body>
 </html>

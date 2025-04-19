@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const karaokePhrase = document.getElementById("karaoke-phrase"); // Contenedor para las frases
     const karaokeFeedback = document.getElementById("karaoke-feedback");
     const retryButton = document.getElementById("retry-button");
-
     const pausePoints = [
         {
             time: 27,
@@ -53,7 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
             .replace(/[\u0300-\u036f]/g, "")
             .trim();
     };
-
     // Función para mostrar las frases divididas
     const displayPhrases = (phrases) => {
         karaokePhrase.innerHTML = phrases

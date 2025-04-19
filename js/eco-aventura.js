@@ -4,25 +4,26 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentLevel = document.getElementById("current-level");
     const feedback = document.getElementById("feedback");
     const progressBar = document.getElementById("progress-bar");
+    const wordImage = document.getElementById("word-image");
 
     const content = [
         // Nivel inicial
-        { text: "Mamá", level: "Inicial" },
-        { text: "Papá", level: "Inicial" },
-        { text: "Sol", level: "Inicial" },
-        { text: "Luna", level: "Inicial" },
-        { text: "Taza", level: "Inicial" },
-        { text: "Casa", level: "Inicial" },
+        { text: "Mamá", level: "Inicial", image: "imagenes/madre.png" },
+        { text: "Papá", level: "Inicial", image: "imagenes/padre.png" },
+        { text: "Sol", level: "Inicial", image: "imagenes/sol.png" },
+        { text: "Luna", level: "Inicial", image: "imagenes/luna.png" },
+        { text: "Taza", level: "Inicial", image: "imagenes/taza.png" },
+        { text: "Casa", level: "Inicial", image: "imagenes/casa.png" },
         // Nivel intermedio
-        { text: "Elefante", level: "Intermedio" },
-        { text: "Montaña", level: "Intermedio" },
-        { text: "Computadora", level: "Intermedio" },
-        { text: "Grillo", level: "Intermedio" },
-        { text: "La rana salta y canta", level: "Intermedio" },
-        { text: "El gato en el zapato", level: "Intermedio" },
+        { text: "Elefante", level: "Intermedio", image: "imagenes/elefante.png" },
+        { text: "Montaña", level: "Intermedio", image: "imagenes/montaña.png" },
+        { text: "Computadora", level: "Intermedio", image: "imagenes/computadora.png" },
+        { text: "Murciélago", level: "Intermedio", image: "imagenes/murcielago.png" },
         // Nivel avanzado
-        { text: "Tres tristes tigres comen trigo", level: "Avanzado" },
-        { text: "Si el caracol tuviera cara sería un caracol con cara", level: "Avanzado" }
+        { text: "La rana salta y canta", level: "Avanzado", image: "imagenes/rana.png" },
+        { text: "El gato en el zapato", level: "Avanzado", image: "imagenes/gato.png" },
+        { text: "Tres tristes tigres comen trigo", level: "Avanzado", image: "imagenes/tigres.png" },
+        { text: "El perro de San Roque no tiene rabo", level: "Avanzado", image: "imagenes/perro.png" }
     ];
 
     let currentIndex = 0;
@@ -56,9 +57,17 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
+        // Mostrar elementos ocultos
+        document.getElementById("current-level").style.display = "block";
+        document.getElementById("feedback").style.display = "block";
+        document.getElementById("progress-container").style.display = "block";
+        document.getElementById("word-image").style.display = "block"; // Mostrar la imagen
+
         const currentItem = content[currentIndex];
         currentContent.textContent = currentItem.text;
         currentLevel.textContent = `Nivel: ${currentItem.level}`;
+        wordImage.src = currentItem.image;
+        wordImage.alt = currentItem.text;
         feedback.textContent = "Escuchando..."; // Feedback más grande
         recognition.start();
     });
@@ -77,10 +86,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 const nextItem = content[currentIndex];
                 currentContent.textContent = nextItem.text;
                 currentLevel.textContent = `Nivel: ${nextItem.level}`;
+                wordImage.src = nextItem.image;
+                wordImage.alt = nextItem.text;
                 recognition.start(); // Continuar escuchando automáticamente
             } else {
                 currentContent.textContent = "¡Has completado todos los niveles!";
                 currentLevel.textContent = "Nivel: Completado";
+                wordImage.style.display = "none";
                 feedback.textContent = "¡Felicidades! Has completado todo.";
             }
         } else {

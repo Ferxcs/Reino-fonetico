@@ -12,13 +12,15 @@
     <main>
         <h1>Eco Aventura</h1>
         <div id="eco-content">
-            <h2 id="current-level">Nivel: Inicial</h2> <!-- Título dinámico del nivel -->
-            <h3 id="current-content" style="font-size: 3rem;">Presiona "Iniciar" para comenzar</h3> <!-- Palabras más grandes -->
-            <button id="start-voice" style="font-size: 1rem;">Iniciar Reconocimiento de Voz</button> <!-- Botón más pequeño -->
-            <p id="feedback" style="font-size: 2rem;">Repite correctamente para avanzar.</p> <!-- Feedback más grande -->
-            <div id="progress-container">
-                <label for="progress-bar">Progreso:</label>
-                <progress id="progress-bar" value="0" max="100"></progress>
+            <h2 id="current-level" style="display: none;">Nivel: Inicial</h2> <!-- Título dinámico del nivel -->
+            <div id="word-container">
+                <img id="word-image" src="" alt="" style="display: none;">
+                <h3 id="current-content" style="font-size: 2rem;">Presiona Iniciar</h3> <!-- Palabras más grandes -->
+            </div>
+            <button id="start-voice" class="start-button">Iniciar</button> <!-- Botón más pequeño -->
+            <p id="feedback" style="display: none;"></p> <!-- Feedback más grande -->
+            <div id="progress-container" style="display: none;">
+                <div id="progress-bar"></div>
             </div>
         </div>
     </main>

@@ -60,4 +60,188 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         }
     });
+
+    const levelImages = document.querySelectorAll(".level-image");
+    const leftArrow = document.getElementById("left-arrow");
+    const rightArrow = document.getElementById("right-arrow");
+    let currentImageIndex = 0;
+
+    function updateCarousel() {
+        levelImages.forEach((image, index) => {
+            image.style.transform = `translateX(${(index - currentImageIndex) * 100}%)`;
+        });
+    }
+
+    leftArrow.addEventListener("click", () => {
+        currentImageIndex = (currentImageIndex - 1 + levelImages.length) % levelImages.length;
+        updateCarousel();
+    });
+
+    rightArrow.addEventListener("click", () => {
+        currentImageIndex = (currentImageIndex + 1) % levelImages.length;
+        updateCarousel();
+    });
+
+    // Inicializar el carrusel
+    updateCarousel();
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.game-button');
+    const prevArrow = document.querySelector('.prev-arrow');
+    const nextArrow = document.querySelector('.next-arrow');
+    const mainTitle = document.querySelector('h1'); // Seleccionar el título principal
+    let currentIndex = 0;
+
+    const titles = [
+        "Eco Aventura",
+        "Karaoke Mágico",
+        "Cuentos que Hablan"
+    ];
+
+    function showButton(index) {
+        buttons.forEach(button => button.classList.remove('active'));
+        buttons[index].classList.add('active');
+        // Actualizar el título
+        mainTitle.textContent = titles[index];
+    }
+
+    // Inicializar
+    showButton(currentIndex);
+
+    prevArrow.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + buttons.length) % buttons.length;
+        showButton(currentIndex);
+    });
+
+    nextArrow.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % buttons.length;
+        showButton(currentIndex);
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Audio para transiciones
+    const transitionSound = new Audio('audio/transition.mp3');
+    
+    // Temporizador para inactividad
+    let inactivityTimer;
+    let isMessageShowing = false;
+    
+    // Crear mensaje de inactividad
+    const inactivityMessage = document.createElement('div');
+    inactivityMessage.className = 'inactivity-message';
+    inactivityMessage.textContent = '¡Toca para continuar!';
+    document.querySelector('.single-button-container').appendChild(inactivityMessage);
+
+    // Función para mostrar mensaje de inactividad
+    function showInactivityMessage() {
+        if (!isMessageShowing) {
+            inactivityMessage.classList.add('show');
+            isMessageShowing = true;
+        }
+    }
+
+    // Función para ocultar mensaje de inactividad
+    function hideInactivityMessage() {
+        if (isMessageShowing) {
+            inactivityMessage.classList.remove('show');
+            isMessageShowing = false;
+        }
+    }
+
+    // Reiniciar temporizador de inactividad
+    function resetInactivityTimer() {
+        clearTimeout(inactivityTimer);
+        hideInactivityMessage();
+        inactivityTimer = setTimeout(showInactivityMessage, 5000);
+    }
+
+    // Event listeners para detectar actividad
+    document.addEventListener('mousemove', resetInactivityTimer);
+    document.addEventListener('click', resetInactivityTimer);
+    document.addEventListener('keypress', resetInactivityTimer);
+
+    // Iniciar temporizador
+    resetInactivityTimer();
+
+    // Modificar la función showButton existente
+    function showButton(index) {
+        buttons.forEach(button => button.classList.remove('active'));
+        buttons[index].classList.add('active');
+        mainTitle.textContent = titles[index];
+        
+        // Reproducir sonido al cambiar de sección
+        transitionSound.currentTime = 0;
+        transitionSound.play().catch(error => {
+            console.log('Auto-play prevented:', error);
+        });
+    }
+
+    // Event listener para botones de navegación
+    prevArrow.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + buttons.length) % buttons.length;
+        showButton(currentIndex);
+    });
+
+    nextArrow.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % buttons.length;
+        showButton(currentIndex);
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const backgroundMusic = document.getElementById('background-music');
+    backgroundMusic.volume = 0.5; // Aumentado de 0.3 a 0.5 (50% del volumen)
+
+    // Función para manejar el sonido de fondo
+    function handleBackgroundMusic() {
+        // Intentar reproducir inmediatamente
+        backgroundMusic.play().catch(error => {
+            console.log('Auto-play prevented:', error);
+            // Si falla el autoplay, intentar con la interacción del usuario
+            document.addEventListener('click', () => {
+                if (backgroundMusic.paused) {
+                    backgroundMusic.play();
+                }
+            }, { once: true });
+        });
+
+        // Detener música cuando se navega fuera de la página
+        const links = document.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                backgroundMusic.pause();
+            });
+        });
+    }
+
+    handleBackgroundMusic();
+});
+
+function showButton(index) {
+    buttons.forEach(button => button.classList.remove('active'));
+    buttons[index].classList.add('active');
+    
+    // Animar el título
+    mainTitle.textContent = titles[index];
+    mainTitle.classList.remove('animate');
+    void mainTitle.offsetWidth; // Forzar reflow
+    mainTitle.classList.add('animate');
+    
+    // Reproducir sonido de transición
+    const transitionSound = new Audio('audio/transition.mp3');
+    transitionSound.volume = 1.0; // Volumen al máximo
+    transitionSound.currentTime = 0;
+    
+    // Asegurarnos de que el sonido se reproduzca completamente
+    const playSound = async () => {
+        try {
+            await transitionSound.play();
+        } catch (error) {
+            console.log('Error playing transition sound:', error);
+        }
+    };
+    
+    playSound();
+}
